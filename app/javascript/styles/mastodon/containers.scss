@@ -118,3 +118,293 @@
     margin-left: 8px;
   }
 }
+
+.public-layout {
+  .header {
+    margin: 10px;
+    background: lighten($ui-base-color, 8%);
+    border-radius: 4px;
+    height: 48px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    .brand {
+      display: block;
+      padding: 15px;
+
+      img {
+        display: block;
+        height: 18px;
+        width: auto;
+        position: relative;
+        bottom: -2px;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: lighten($ui-base-color, 12%);
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 3fr 1fr;
+
+    .grid {
+      grid-template-columns: 1fr 3fr;
+    }
+  }
+
+  .public-account-header {
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    &__image {
+      border-radius: 4px 4px 0 0;
+      overflow: hidden;
+      height: 300px;
+
+      img {
+        object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 4px 4px 0 0;
+      }
+    }
+
+    &__bar {
+      position: relative;
+      margin-top: -80px;
+      display: flex;
+      justify-content: flex-start;
+
+      &::before {
+        content: "";
+        display: block;
+        background: lighten($ui-base-color, 8%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        border-radius: 0 0 4px 4px;
+        z-index: -1;
+      }
+
+      .avatar {
+        display: block;
+        width: 120px;
+        height: 120px;
+        padding-left: 20px;
+        padding-top: 6px;
+        flex: 0 0 auto;
+
+        img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    &__tabs {
+      flex: 1 1 auto;
+      margin-left: 20px;
+
+      &__name {
+        padding-top: 20px;
+        padding-bottom: 8px;
+
+        h1 {
+          font-size: 20px;
+          line-height: 18px * 1.5;
+          color: $primary-text-color;
+          font-weight: 500;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-shadow: 1px 1px 1px $base-shadow-color;
+
+          small {
+            display: block;
+            font-size: 14px;
+            color: $primary-text-color;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+
+      &__tabs {
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        height: 58px;
+
+        .details-counters {
+          display: flex;
+          flex-direction: row;
+          min-width: 300px;
+        }
+
+        .counter {
+          width: 33.3%;
+          box-sizing: border-box;
+          flex: 0 0 auto;
+          color: $darker-text-color;
+          padding: 10px;
+          border-right: 1px solid lighten($ui-base-color, 4%);
+          cursor: default;
+          text-align: center;
+          position: relative;
+
+          a {
+            display: block;
+          }
+
+          &:last-child {
+            border-right: 0;
+          }
+
+          &::after {
+            display: block;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: 4px solid $ui-primary-color;
+            opacity: 0.5;
+            transition: all 400ms ease;
+          }
+
+          &.active {
+            &::after {
+              border-bottom: 4px solid $highlight-text-color;
+              opacity: 1;
+            }
+          }
+
+          &:hover {
+            &::after {
+              opacity: 1;
+              transition-duration: 100ms;
+            }
+          }
+
+          a {
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .counter-label {
+            font-size: 12px;
+            display: block;
+          }
+
+          .counter-number {
+            font-weight: 500;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: $primary-text-color;
+            font-family: 'mastodon-font-display', sans-serif;
+          }
+        }
+
+        .spacer {
+          flex: 1 1 auto;
+          height: 1px;
+        }
+
+        &__buttons {
+          padding-top: 7px;
+          padding-right: 8px;
+        }
+
+        .button.logo-button {
+          flex: 0 auto;
+          font-size: 14px;
+          background: $ui-highlight-color;
+          color: $primary-text-color;
+          text-transform: none;
+          line-height: 36px;
+          height: auto;
+          padding: 3px 15px;
+          border: 0;
+
+          svg {
+            width: 20px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 5px;
+
+            path:first-child {
+              fill: $primary-text-color;
+            }
+
+            path:last-child {
+              fill: $ui-highlight-color;
+            }
+          }
+
+          &:active,
+          &:focus,
+          &:hover {
+            background: lighten($ui-highlight-color, 10%);
+
+            svg path:last-child {
+              fill: lighten($ui-highlight-color, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .public-account-bio {
+    background: lighten($ui-base-color, 8%);
+    border-radius: 4px;
+    overflow: hidden;
+
+    .account__header__fields {
+      margin: 0;
+      border-top: 0;
+
+      a {
+        color: lighten($ui-highlight-color, 8%);
+      }
+    }
+
+    .account__header__content {
+      padding: 20px;
+      color: $primary-text-color;
+    }
+  }
+
+  .footer {
+    margin-top: 0;
+    text-align: left;
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    p:last-child {
+      color: lighten($ui-base-color, 34%);
+    }
+  }
+}

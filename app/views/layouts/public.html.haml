@@ -2,7 +2,14 @@
   = javascript_pack_tag 'public', integrity: true, crossorigin: 'anonymous'
 
 - content_for :content do
-  .container-alt= yield
+  .public-layout
+    %nav.header
+      = link_to root_url, class: 'brand' do
+        = image_tag asset_pack_path('logo_full.svg'), alt: 'Mastodon'
+
+    .container= yield
+
+/
   .footer
     - if !user_signed_in? && single_user_mode?
       %span.single-user-login
